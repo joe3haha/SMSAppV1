@@ -100,6 +100,10 @@ public class SMS extends Activity {
         startActivity(intent);
     }
 
+    public void toMessages(View view){
+        Intent intent = new Intent(this, SmsRecieve.class);
+        startActivity(intent);
+    }
 
     public void toContacts(View view){
         Intent intent = new Intent(this, ContactListActivity.class);
