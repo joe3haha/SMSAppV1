@@ -1,6 +1,7 @@
 package alextorres.smsapp;
 
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -30,9 +33,16 @@ public class ContactListActivity extends AppCompatActivity {
         //arrayAdapterId = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, id);
         contactList = (ListView) findViewById(R.id.ContactList);
         contactList.setAdapter(arrayAdapterNames);
-        //contactList.setOnItemClickListener(this);
+        contactList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ContactListActivity.this, SMS.class);
+                intent.putExtra("ContactName", arrayAdapterNames.getItem(position));
+                startActivity(intent);
+            }
+        });
 
-        refreshDrafts();
+        //refreshDrafts();
 
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);

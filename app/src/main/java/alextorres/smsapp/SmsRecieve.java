@@ -47,10 +47,13 @@ public class SmsRecieve extends AppCompatActivity implements AdapterView.OnItemC
         }
     }
 
+    String[] thread_id, snippet,conversationCount, phoneNumbers;
+    ArrayList<String> name;
     private static SmsRecieve inst;
     ArrayList<String> smsMessagesList = new ArrayList<String>();
     ListView smsListView;
     ArrayAdapter arrayAdapter;
+
 
     public static SmsRecieve instance() {
         return inst;
@@ -91,16 +94,78 @@ public class SmsRecieve extends AppCompatActivity implements AdapterView.OnItemC
 
     private void refreshSmsInbox() {
         ContentResolver contentResolver = getContentResolver();
-        Cursor smsInboxCursor = contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null);
-        int indexBody = smsInboxCursor.getColumnIndex("body");
-        int indexAddress = smsInboxCursor.getColumnIndex("address");
-        if (indexBody < 0 || !smsInboxCursor.moveToFirst()) return;
-        arrayAdapter.clear();
-        do {
-            String str = "SMS From: " + smsInboxCursor.getString(indexAddress) +
-                    "\n" + smsInboxCursor.getString(indexBody) + "\n";
-            arrayAdapter.add(str);
-        } while (smsInboxCursor.moveToNext());
+        Cursor smsInboxCursor = contentResolver.query(Uri.parse("content://sms/conversations"), null, null, null, null);
+
+        conversationCount = new String[smsInboxCursor.getCount()];
+        snippet = new String[smsInboxCursor.getCount()];
+        thread_id = new String[smsInboxCursor.getCount()];
+
+
+        //get conversations from the database along with the count of corresponding messages and the thread id for
+        //all of the messages
+        smsInboxCursor.moveToFirst();
+        for(int i = 0; i < smsInboxCursor.getCount(); i++){
+            conversationCount[i] = smsInboxCursor.getString(smsInboxCursor.getColumnIndexOrThrow(("msg_count"))).toString();
+
+            snippet[i] = smsInboxCursor.getString(smsInboxCursor.getColumnIndexOrThrow(("snippet"))).toString();
+
+            thread_id[i] = smsInboxCursor.getString(smsInboxCursor.getColumnIndexOrThrow(("thread_id"))).toString();
+
+            arrayAdapter.add(thread_id[i] + " : " + snippet[i]);
+            smsInboxCursor.moveToNext();
+        }
+
+        //System.out.println(snippet[1] + "\n");
+        smsInboxCursor.close();
+
+/*
+        //get address and name of people in conversation
+        for(int i = 0; i < thread_id.length; i++) {
+            String query = "thread_id=" + thread_id[i];
+            Cursor conversationNumbers = getContentResolver().query(Uri.parse("content://sms/inbox"), null, query, null, null);
+
+            phoneNumbers = new String[conversationNumbers.getCount()];
+
+            try {
+                conversationNumbers.moveToFirst();
+                for (int k = 0; k < conversationNumbers.getCount(); k++) {
+                    phoneNumbers[k] = conversationNumbers.getString(conversationNumbers.getColumnIndexOrThrow("address")).toString();
+
+                    //arrayAdapter.add(phoneNumbers[k] + " : " + snippet[k]);
+
+                    conversationNumbers.moveToNext();
+                }
+                conversationNumbers.close();
+            } catch (Exception e) {
+                conversationNumbers.close();
+            }
+        }
+*/
+
+      /*  for(int k = 0; k < thread_id.length; k++) {
+            Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumbers[k]));
+            Cursor numToName = getContentResolver().query(uri, new String[]{ContactsContract.PhoneLookup._ID,
+                    ContactsContract.PhoneLookup.DISPLAY_NAME}, null, null, null);
+
+            int nameLocation = numToName.getColumnIndex(ContactsContract.Data.DISPLAY_NAME);
+
+            try{
+                if(numToName != null && numToName.moveToNext()){
+                    name.add(numToName.getString(nameLocation));
+                    System.out.println(numToName.getString(nameLocation));
+                }
+
+            }catch(Exception E){
+
+            }finally{
+                if(numToName == null){
+                    numToName.close();
+                }
+            }
+
+        }
+        */
+
     }
 
     public void updateList(final String smsMessage) {
@@ -110,16 +175,10 @@ public class SmsRecieve extends AppCompatActivity implements AdapterView.OnItemC
 
     public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
         try {
-            String[] smsMessages = smsMessagesList.get(pos).split("\n");
-            String address = smsMessages[0];
-            String smsMessage = "";
-            for (int i = 1; i < smsMessages.length; ++i) {
-                smsMessage += smsMessages[i];
-            }
-
-            String smsMessageStr = address + "\n";
-            smsMessageStr += smsMessage;
-            Toast.makeText(this, smsMessageStr, Toast.LENGTH_SHORT).show();
+            String threadHolder = thread_id[pos];
+            Intent intent = new Intent(this, ConversationDisplayActivity.class);
+            intent.putExtra("THREAD_ID", threadHolder);
+            startActivity(intent);
         } catch (Exception e) {
             e.printStackTrace();
         }
