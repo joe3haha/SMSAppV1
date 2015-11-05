@@ -1,6 +1,7 @@
 package alextorres.smsapp;
 
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,17 +9,42 @@ import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ConversationDisplayActivity extends AppCompatActivity {
 
-
+    ArrayAdapter<String> arrayAdapterMessages;
+    ListView messageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String threadID = "99";
         setContentView(R.layout.activity_conversation_display);
+        Bundle threadDetail = getIntent().getExtras();
+        if (threadDetail != null) {
+            threadID = threadDetail.getString("THREAD_ID");
+        }
+        ArrayList<String> messages = getMessages(threadID);
+        arrayAdapterMessages = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages);
+        messageList = (ListView) findViewById(R.id.conversationMessageList);
+        messageList.setAdapter(arrayAdapterMessages);
+        messageList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CharSequence text = "Clicked on the item!";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(getBaseContext(),text, duration);
+                toast.show();
+            }
+        });
+
     }
 
     private ArrayList<String> getMessages(String thread_id){
@@ -29,15 +55,12 @@ public class ConversationDisplayActivity extends AppCompatActivity {
 
         if (conversationMessageCursor.getCount() > 0) {
             while (conversationMessageCursor.moveToNext()) {
-                String id = conversationMessageCursor.getString(
-                        cur.getColumnIndex(ContactsContract.Contacts._ID));
-                ident.add(id);
-                String name = cur.getString(
-                        cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-                names.add(name);
-                //if (Integer.parseInt(cur.getString(cur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) {
-                //System.out.println("Blue\n");
-                //}
+                try{
+                    messages.add(conversationMessageCursor.getString(conversationMessageCursor.getColumnIndexOrThrow("address")).toString());
+                    conversationMessageCursor.moveToNext();
+                }catch (Exception E){
+                    System.out.println("Something went wrong: " + E);
+                }
             }
         }
 
