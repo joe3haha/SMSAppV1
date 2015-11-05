@@ -1,11 +1,9 @@
 package alextorres.smsapp;
 
 import android.content.ContentResolver;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ConversationDisplayActivity extends AppCompatActivity {
 
@@ -32,6 +31,7 @@ public class ConversationDisplayActivity extends AppCompatActivity {
             threadID = threadDetail.getString("THREAD_ID");
         }
         ArrayList<String> messages = getMessages(threadID);
+        Collections.reverse(messages);
         arrayAdapterMessages = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages);
         messageList = (ListView) findViewById(R.id.conversationMessageList);
         messageList.setAdapter(arrayAdapterMessages);
@@ -40,7 +40,7 @@ public class ConversationDisplayActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 CharSequence text = "Clicked on the item!";
                 int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(getBaseContext(),text, duration);
+                Toast toast = Toast.makeText(getBaseContext(), text, duration);
                 toast.show();
             }
         });
@@ -51,13 +51,13 @@ public class ConversationDisplayActivity extends AppCompatActivity {
         ContentResolver cr = getContentResolver();
         ArrayList<String> messages = new ArrayList<String>();
         String query = "thread_id=" + thread_id;
-        Cursor conversationMessageCursor = cr.query(Uri.parse("content://sms/inbox"), null, query, null, null);
+        Cursor conversationMessageCursor = cr.query(Uri.parse("content://sms/"), null, query, null, null);
 
         if (conversationMessageCursor.getCount() > 0) {
             while (conversationMessageCursor.moveToNext()) {
                 try{
-                    messages.add(conversationMessageCursor.getString(conversationMessageCursor.getColumnIndexOrThrow("address")).toString());
-                    conversationMessageCursor.moveToNext();
+                    messages.add(conversationMessageCursor.getString(conversationMessageCursor.getColumnIndexOrThrow("body")).toString());
+
                 }catch (Exception E){
                     System.out.println("Something went wrong: " + E);
                 }
