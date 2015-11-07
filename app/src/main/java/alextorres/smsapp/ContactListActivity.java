@@ -41,6 +41,7 @@ public class ContactListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+<<<<<<< HEAD
 
 <<<<<<< HEAD
          contactList.setClickable(true);
@@ -61,6 +62,10 @@ public class ContactListActivity extends AppCompatActivity {
 
         });
 =======
+        //refreshDrafts();
+>>>>>>> joe3haha/master
+=======
+
         //refreshDrafts();
 >>>>>>> joe3haha/master
 
