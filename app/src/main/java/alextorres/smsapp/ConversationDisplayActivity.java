@@ -5,7 +5,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,11 +22,15 @@ public class ConversationDisplayActivity extends AppCompatActivity {
 
     ArrayAdapter<String> arrayAdapterMessages;
     ListView messageList;
+    ListView forwardLV = (ListView) findViewById(R.id.forwardMessage);
+    public String threadID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String threadID = "99";
+        registerForContextMenu(forwardLV);
+        threadID = "99";
         setContentView(R.layout.activity_conversation_display);
         Bundle threadDetail = getIntent().getExtras();
         if (threadDetail != null) {
@@ -68,6 +74,24 @@ public class ConversationDisplayActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        if (v.getId()==R.id.forwardMessage) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.menu_conversation_display, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        String body = messageList.getSelectedItem().toString();
+        if (item.getItemId() == R.id.forward) {
+            new SMS(body);
+        }
+        return true;
+    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_conversation_display, menu);

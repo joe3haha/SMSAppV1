@@ -41,10 +41,8 @@ public class ContactListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-         contactList.setClickable(true);
+        contactList.setClickable(true);
         contactList.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
 
@@ -61,13 +59,7 @@ public class ContactListActivity extends AppCompatActivity {
 
 
         });
-=======
-        //refreshDrafts();
->>>>>>> joe3haha/master
-=======
 
-        //refreshDrafts();
->>>>>>> joe3haha/master
 
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);

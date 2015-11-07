@@ -20,7 +20,11 @@ public class SMS extends Activity {
     public EditText txtMessage;
 
     public SMS(String number) {
-        txtPhoneNo.setText(number);
+        if((number.length()==10) || (number.length()==11)) {
+            txtPhoneNo.setText(number);
+        }
+
+        else txtMessage.setText(number);
     }
 
     @Override
