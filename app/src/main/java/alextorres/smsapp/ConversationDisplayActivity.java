@@ -18,8 +18,8 @@ import java.util.Collections;
 
 public class ConversationDisplayActivity extends AppCompatActivity {
 
-    ArrayAdapter<String> arrayAdapterMessages;
-    ListView messageList;
+    ArrayAdapter<String> arrayAdapterMessages, arrayAdapterNames;
+    ListView messageList, nameList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,21 @@ public class ConversationDisplayActivity extends AppCompatActivity {
             }
         });
 
+        ArrayList<String> names = getNames(threadID);
+        Collections.reverse(names);
+        arrayAdapterNames = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,names);
+        nameList = (ListView) findViewById(R.id.namesOrNumbers);
+        nameList.setAdapter(arrayAdapterNames);
+        nameList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CharSequence text = "Clicked on the name!";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(getBaseContext(), text, duration);
+                toast.show();
+            }
+        });
+
     }
 
     private ArrayList<String> getMessages(String thread_id){
@@ -57,6 +72,26 @@ public class ConversationDisplayActivity extends AppCompatActivity {
             while (conversationMessageCursor.moveToNext()) {
                 try{
                     messages.add(conversationMessageCursor.getString(conversationMessageCursor.getColumnIndexOrThrow("body")).toString());
+
+                }catch (Exception E){
+                    System.out.println("Something went wrong: " + E);
+                }
+            }
+        }
+
+        return messages;
+    }
+
+    private ArrayList<String> getNames(String thread_id){
+        ContentResolver cr = getContentResolver();
+        ArrayList<String> messages = new ArrayList<String>();
+        String query = "thread_id=" + thread_id;
+        Cursor conversationMessageCursor = cr.query(Uri.parse("content://sms/"), null, query, null, null);
+
+        if (conversationMessageCursor.getCount() > 0) {
+            while (conversationMessageCursor.moveToNext()) {
+                try{
+                    messages.add(conversationMessageCursor.getString(conversationMessageCursor.getColumnIndexOrThrow("address")).toString());
 
                 }catch (Exception E){
                     System.out.println("Something went wrong: " + E);
