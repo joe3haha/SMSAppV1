@@ -33,8 +33,16 @@ public class ContactListActivity extends AppCompatActivity {
         //arrayAdapterId = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, id);
         contactList = (ListView) findViewById(R.id.ContactList);
         contactList.setAdapter(arrayAdapterNames);
-        //contactList.setOnItemClickListener(this);
+        contactList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ContactListActivity.this, SMS.class);
+                intent.putExtra("ContactName", arrayAdapterNames.getItem(position));
+                startActivity(intent);
+            }
+        });
 
+<<<<<<< HEAD
          contactList.setClickable(true);
         contactList.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -52,6 +60,9 @@ public class ContactListActivity extends AppCompatActivity {
 
 
         });
+=======
+        //refreshDrafts();
+>>>>>>> joe3haha/master
 
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);

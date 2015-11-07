@@ -33,6 +33,20 @@ public class SMS extends Activity {
         txtMessage = (EditText) findViewById(R.id.txtMessage);
 
 
+        try{
+            Bundle extras = getIntent().getExtras();
+            if (!(extras.isEmpty())) {
+                try {
+                    String number = extras.getString("ContactName");
+                    txtPhoneNo.setText(number);
+                } catch (Exception E) {
+                    System.out.println("Blah");
+                }
+            }
+        }catch(Exception e){
+
+        }
+
         btnSendSMS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
