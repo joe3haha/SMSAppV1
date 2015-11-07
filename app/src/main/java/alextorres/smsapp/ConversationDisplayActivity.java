@@ -1,9 +1,11 @@
 package alextorres.smsapp;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -86,12 +88,21 @@ public class ConversationDisplayActivity extends AppCompatActivity {
         ContentResolver cr = getContentResolver();
         ArrayList<String> messages = new ArrayList<String>();
         String query = "thread_id=" + thread_id;
+        String name = null;
+        String number = null;
         Cursor conversationMessageCursor = cr.query(Uri.parse("content://sms/"), null, query, null, null);
 
         if (conversationMessageCursor.getCount() > 0) {
             while (conversationMessageCursor.moveToNext()) {
                 try{
-                    messages.add(conversationMessageCursor.getString(conversationMessageCursor.getColumnIndexOrThrow("address")).toString());
+                    number = conversationMessageCursor.getString(conversationMessageCursor.getColumnIndexOrThrow("address")).toString();
+                    name = getContactName(getApplicationContext(), conversationMessageCursor.getString(conversationMessageCursor.getColumnIndexOrThrow("address")));
+
+                    if(name == null) {
+                        messages.add(number);
+                    }else{
+                        messages.add(name);
+                    }
 
                 }catch (Exception E){
                     System.out.println("Something went wrong: " + E);
@@ -100,6 +111,26 @@ public class ConversationDisplayActivity extends AppCompatActivity {
         }
 
         return messages;
+    }
+
+    public String getContactName(Context context, String phoneNumber) {
+        ContentResolver cr = context.getContentResolver();
+        Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
+                Uri.encode(phoneNumber));
+        Cursor cursor = cr.query(uri,
+                new String[] { ContactsContract.PhoneLookup.DISPLAY_NAME }, null, null, null);
+        if (cursor == null) {
+            return null;
+        }
+        String contactName = null;
+        if (cursor.moveToFirst()) {
+            contactName = cursor.getString(cursor
+                    .getColumnIndex(ContactsContract.PhoneLookup.DISPLAY_NAME));
+        }
+        if (cursor != null && !cursor.isClosed()) {
+            cursor.close();
+        }
+        return contactName;
     }
 
     @Override
