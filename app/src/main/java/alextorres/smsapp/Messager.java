@@ -3,9 +3,11 @@ package alextorres.smsapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 
 public class Messager extends AppCompatActivity {
 
@@ -20,7 +22,9 @@ public class Messager extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_messager, menu);
         return true;
+
     }
+
 
 
     public void toMessages(View view){
@@ -36,10 +40,15 @@ public class Messager extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.forward) {
+            ForwardMessage();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void ForwardMessage() {
+
     }
 }

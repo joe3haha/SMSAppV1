@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +21,6 @@ public class ContactListActivity extends AppCompatActivity {
 
     ArrayAdapter<String> arrayAdapterNames, arrayAdapterId, arrayAdapterDrafts;
     ListView contactList;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +38,14 @@ public class ContactListActivity extends AppCompatActivity {
          contactList.setClickable(true);
         contactList.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
+
+
+
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                //add phone number to Phone No field in SMS
+
+
+                new SMS(ContactsContract.PhoneLookup.NUMBER);//pass phone number to sms activity
+
                 Intent intent = new Intent(getApplicationContext(), SMS.class);
                 startActivity(intent);
             }
