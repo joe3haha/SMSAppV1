@@ -114,57 +114,8 @@ public class SmsRecieve extends AppCompatActivity implements AdapterView.OnItemC
             arrayAdapter.add(thread_id[i] + " : " + snippet[i]);
             smsInboxCursor.moveToNext();
         }
-
-        //System.out.println(snippet[1] + "\n");
+        
         smsInboxCursor.close();
-
-/*
-        //get address and name of people in conversation
-        for(int i = 0; i < thread_id.length; i++) {
-            String query = "thread_id=" + thread_id[i];
-            Cursor conversationNumbers = getContentResolver().query(Uri.parse("content://sms/inbox"), null, query, null, null);
-
-            phoneNumbers = new String[conversationNumbers.getCount()];
-
-            try {
-                conversationNumbers.moveToFirst();
-                for (int k = 0; k < conversationNumbers.getCount(); k++) {
-                    phoneNumbers[k] = conversationNumbers.getString(conversationNumbers.getColumnIndexOrThrow("address")).toString();
-
-                    //arrayAdapter.add(phoneNumbers[k] + " : " + snippet[k]);
-
-                    conversationNumbers.moveToNext();
-                }
-                conversationNumbers.close();
-            } catch (Exception e) {
-                conversationNumbers.close();
-            }
-        }
-*/
-
-      /*  for(int k = 0; k < thread_id.length; k++) {
-            Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(phoneNumbers[k]));
-            Cursor numToName = getContentResolver().query(uri, new String[]{ContactsContract.PhoneLookup._ID,
-                    ContactsContract.PhoneLookup.DISPLAY_NAME}, null, null, null);
-
-            int nameLocation = numToName.getColumnIndex(ContactsContract.Data.DISPLAY_NAME);
-
-            try{
-                if(numToName != null && numToName.moveToNext()){
-                    name.add(numToName.getString(nameLocation));
-                    System.out.println(numToName.getString(nameLocation));
-                }
-
-            }catch(Exception E){
-
-            }finally{
-                if(numToName == null){
-                    numToName.close();
-                }
-            }
-
-        }
-        */
 
     }
 
