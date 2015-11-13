@@ -47,6 +47,11 @@
             android:name=".ConversationDisplayActivity"
             android:label="@string/title_activity_conversation_display" >
         </activity>
+        <activity
+            android:name=".DeleteSmsActivity"
+            android:label="@string/title_activity_delete_sms"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

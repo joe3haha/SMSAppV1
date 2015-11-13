@@ -7,4 +7,5 @@
     <string name="title_activity_contact_list">ContactListActivity</string>
     <string name="title_activity_messager">Messager</string>
     <string name="title_activity_conversation_display">ConversationDisplayActivity</string>
+    <string name="title_activity_delete_sms">DeleteSmsActivity</string>
 </resources>

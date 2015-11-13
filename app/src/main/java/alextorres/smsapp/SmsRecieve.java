@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsMessage;
 import android.view.View;
@@ -95,7 +96,7 @@ public class SmsRecieve extends AppCompatActivity implements AdapterView.OnItemC
     private void refreshSmsInbox() {
         ContentResolver contentResolver = getContentResolver();
         Cursor smsInboxCursor = contentResolver.query(Uri.parse("content://sms/conversations"), null, null, null, null);
-
+        String tempName = null;
         conversationCount = new String[smsInboxCursor.getCount()];
         snippet = new String[smsInboxCursor.getCount()];
         thread_id = new String[smsInboxCursor.getCount()];
@@ -111,12 +112,59 @@ public class SmsRecieve extends AppCompatActivity implements AdapterView.OnItemC
 
             thread_id[i] = smsInboxCursor.getString(smsInboxCursor.getColumnIndexOrThrow(("thread_id"))).toString();
 
-            arrayAdapter.add(thread_id[i] + " : " + snippet[i]);
+            tempName = getName(getApplicationContext(),thread_id[i]);
+            if(tempName != null){
+                arrayAdapter.add(tempName + " : " + snippet[i]);
+            }else {
+                arrayAdapter.add(thread_id[i] + " : " + snippet[i]);
+            }
             smsInboxCursor.moveToNext();
         }
         
         smsInboxCursor.close();
 
+    }
+
+    public String getName(Context context, String thread_id){
+        ContentResolver contentResolver = context.getContentResolver();
+        String query = "thread_id=" + thread_id;
+        Cursor conversationMessageCursor = contentResolver.query(Uri.parse("content://sms/"), null, query, null, null);
+        String nameToShow, number;
+
+        if(conversationMessageCursor.moveToFirst()){
+            number = conversationMessageCursor.getString(conversationMessageCursor.getColumnIndexOrThrow("address")).toString();
+            nameToShow = getContactName(context.getApplicationContext(), number);
+            conversationMessageCursor.close();
+            if(nameToShow != null){
+                return nameToShow;
+            }else{
+                return number;
+            }
+        }else{
+            conversationMessageCursor.close();
+            return null;
+        }
+
+    }
+
+    public String getContactName(Context context, String phoneNumber) {
+        ContentResolver cr = context.getContentResolver();
+        Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
+                Uri.encode(phoneNumber));
+        Cursor cursor = cr.query(uri,
+                new String[] { ContactsContract.PhoneLookup.DISPLAY_NAME }, null, null, null);
+        if (cursor == null) {
+            return null;
+        }
+        String contactName = null;
+        if (cursor.moveToFirst()) {
+            contactName = cursor.getString(cursor
+                    .getColumnIndex(ContactsContract.PhoneLookup.DISPLAY_NAME));
+        }
+        if (cursor != null && !cursor.isClosed()) {
+            cursor.close();
+        }
+        return contactName;
     }
 
     public void updateList(final String smsMessage) {
