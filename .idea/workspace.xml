@@ -7,9 +7,12 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="02cf522a-c03c-4e38-a5df-b588e9d1e6e5" name="Default" comment="" />
     <ignored path="SMSAppV1-1.iws" />
 =======
+=======
+>>>>>>> joe3haha/master
     <list default="true" id="8a18cb58-eab8-42f6-a3d2-ac7062ebe293" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/ConversationDisplayActivity.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_conversation_display.xml" />
@@ -49,17 +52,23 @@
   <component name="FileEditorManager">
     <leaf>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <file leaf-file-name="activity_contact_list.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_contact_list.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 =======
+=======
+>>>>>>> joe3haha/master
       <file leaf-file-name="SmsRecieve.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/SmsRecieve.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="180" column="34" selection-start-line="180" selection-start-column="34" selection-end-line="180" selection-end-column="34" />
+<<<<<<< HEAD
+>>>>>>> joe3haha/master
+=======
 >>>>>>> joe3haha/master
               <folding />
             </state>
@@ -69,6 +78,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="menu_messager.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_messager.xml">
@@ -80,16 +90,25 @@
       <file leaf-file-name="ConversationDisplayActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/ConversationDisplayActivity.java">
           <provider selected="true" editor-type-id="text-editor">
+=======
+      <file leaf-file-name="ConversationDisplayActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/ConversationDisplayActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+>>>>>>> joe3haha/master
             <state vertical-scroll-proportion="0.5611702">
               <caret line="32" column="52" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
               <folding>
                 <element signature="e#747#755#0" expanded="true" />
               </folding>
+<<<<<<< HEAD
+>>>>>>> joe3haha/master
+=======
 >>>>>>> joe3haha/master
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="Messager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/Messager.java">
@@ -101,6 +120,11 @@
       <file leaf-file-name="activity_conversation_display.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_conversation_display.xml">
           <provider selected="true" editor-type-id="text-editor">
+=======
+      <file leaf-file-name="activity_conversation_display.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_conversation_display.xml">
+          <provider selected="true" editor-type-id="text-editor">
+>>>>>>> joe3haha/master
             <state vertical-scroll-proportion="-3.689655">
               <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
               <folding>
@@ -109,6 +133,9 @@
                 <element signature="e#349#382#0" expanded="true" />
                 <element signature="e#409#442#0" expanded="true" />
               </folding>
+<<<<<<< HEAD
+>>>>>>> joe3haha/master
+=======
 >>>>>>> joe3haha/master
             </state>
           </provider>
@@ -153,9 +180,41 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="activity_sms.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sms.xml">
           <provider selected="true" editor-type-id="text-editor">
+=======
+      <file leaf-file-name="ContactListActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/ContactListActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="60" selection-end-column="9" />
+              <folding>
+                <element signature="e#1360#1745#0" expanded="true" />
+                <element signature="e#1744#1745#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SMS.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/SMS.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="118" column="8" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="30" />
+              <folding>
+                <element signature="e#1314#1464#0" expanded="true" />
+                <element signature="e#1463#1464#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_sms.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sms.xml">
+          <provider selected="true" editor-type-id="text-editor">
+>>>>>>> joe3haha/master
             <state vertical-scroll-proportion="-0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
@@ -1600,16 +1659,22 @@
     <option name="CHANGED_PATHS">
       <list>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_messager.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/SMS.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/ContactListActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/Messager.java" />
 =======
+=======
+>>>>>>> joe3haha/master
         <option value="$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/ContactListActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/SMS.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/SmsRecieve.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_conversation_display.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/ConversationDisplayActivity.java" />
+<<<<<<< HEAD
+>>>>>>> joe3haha/master
+=======
 >>>>>>> joe3haha/master
       </list>
     </option>
@@ -1626,14 +1691,20 @@
   </component>
   <component name="ProjectFrameBounds">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="y" value="23" />
     <option name="width" value="1366" />
     <option name="height" value="706" />
 =======
+=======
+>>>>>>> joe3haha/master
     <option name="x" value="2" />
     <option name="y" value="23" />
     <option name="width" value="1268" />
     <option name="height" value="726" />
+<<<<<<< HEAD
+>>>>>>> joe3haha/master
+=======
 >>>>>>> joe3haha/master
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -1661,8 +1732,11 @@
     <panes>
       <pane id="Scratches" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <pane id="ProjectPane" />
       <pane id="Scope" />
+=======
+>>>>>>> joe3haha/master
 =======
 >>>>>>> joe3haha/master
       <pane id="AndroidView">
@@ -1770,6 +1844,10 @@
       <pane id="Scope" />
       <pane id="PackagesPane" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <pane id="ProjectPane" />
+>>>>>>> joe3haha/master
 =======
       <pane id="ProjectPane" />
 >>>>>>> joe3haha/master
@@ -1781,8 +1859,11 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="FullScreen" value="false" />
 =======
+=======
+>>>>>>> joe3haha/master
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="emulator-5554" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_21_x86" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../SmsAppp" />
@@ -1794,6 +1875,9 @@
     <key name="android.template.parentActivityClass">
       <recent name="" />
     </key>
+<<<<<<< HEAD
+>>>>>>> joe3haha/master
+=======
 >>>>>>> joe3haha/master
   </component>
   <component name="RunManager" selected="Android Application.app">
@@ -1962,6 +2046,7 @@
   </component>
   <component name="ToolWindowManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <frame x="0" y="23" width="1366" height="706" extended-state="0" />
     <editor active="true" />
     <layout>
@@ -1997,6 +2082,11 @@
     <frame x="2" y="23" width="1268" height="726" extended-state="0" />
     <editor active="true" />
     <layout>
+=======
+    <frame x="2" y="23" width="1268" height="726" extended-state="0" />
+    <editor active="true" />
+    <layout>
+>>>>>>> joe3haha/master
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -2024,6 +2114,9 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+>>>>>>> joe3haha/master
+=======
 >>>>>>> joe3haha/master
     </layout>
   </component>
@@ -2046,6 +2139,7 @@
   </component>
   <component name="editorHistoryManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/ContactListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2062,6 +2156,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 =======
+=======
+>>>>>>> joe3haha/master
     <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/SmsRecieve.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2190,6 +2286,7 @@
       </provider>
     </entry>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/Messager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.50711745">
@@ -2200,7 +2297,84 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
 >>>>>>> joe3haha/master
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/Messager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.27659574">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/SmsRecieve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="180" column="34" selection-start-line="180" selection-start-column="34" selection-end-line="180" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sms_recieve.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="15" />
+>>>>>>> joe3haha/master
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_conversation_display.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.689655">
+          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding>
+            <element signature="e#229#264#0" expanded="true" />
+            <element signature="e#290#325#0" expanded="true" />
+            <element signature="e#349#382#0" expanded="true" />
+            <element signature="e#409#442#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/ContactListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
+          <caret line="48" column="8" selection-start-line="48" selection-start-column="8" selection-end-line="60" selection-end-column="9" />
+          <folding>
+            <element signature="e#1360#1745#0" expanded="true" />
+            <element signature="e#1744#1745#0" expanded="true" />
+=======
+          <caret line="118" column="8" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="30" />
+          <folding>
+            <element signature="e#1314#1464#0" expanded="true" />
+            <element signature="e#1463#1464#0" expanded="true" />
+>>>>>>> joe3haha/master
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/alextorres/smsapp/ConversationDisplayActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5611702">
+          <caret line="32" column="52" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
+          <folding>
+            <element signature="e#747#755#0" expanded="true" />
+          </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sms.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+>>>>>>> joe3haha/master
         </state>
       </provider>
       <provider editor-type-id="android-designer">

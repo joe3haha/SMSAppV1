@@ -1,5 +1,4 @@
 package alextorres.smsapp;
-
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
@@ -16,22 +15,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class ConversationDisplayActivity extends AppCompatActivity {
 
-<<<<<<< HEAD
-    ArrayAdapter<String> arrayAdapterMessages;
-    ListView messageList;
     ListView forwardLV = (ListView) findViewById(R.id.forwardMessage);
     public String threadID;
-
-=======
     ArrayAdapter<String> arrayAdapterMessages, arrayAdapterNames;
     ListView messageList, nameList;
->>>>>>> joe3haha/master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
