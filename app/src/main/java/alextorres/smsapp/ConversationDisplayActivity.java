@@ -1,5 +1,4 @@
 package alextorres.smsapp;
-
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,20 +7,23 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
 public class ConversationDisplayActivity extends AppCompatActivity {
 
+    ListView forwardLV = (ListView) findViewById(R.id.forwardMessage);
+    public String threadID;
     ArrayAdapter<String> arrayAdapterMessages, arrayAdapterNames;
     ListView messageList, nameList;
     ArrayList<String> messages;
@@ -29,7 +31,8 @@ public class ConversationDisplayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String threadID = "99";
+        registerForContextMenu(forwardLV);
+        threadID = "99";
         setContentView(R.layout.activity_conversation_display);
         Bundle threadDetail = getIntent().getExtras();
         if (threadDetail != null) {
@@ -209,6 +212,24 @@ public class ConversationDisplayActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        if (v.getId()==R.id.forwardMessage) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.menu_conversation_display, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        String body = messageList.getSelectedItem().toString();
+        if (item.getItemId() == R.id.forward) {
+            new SMS(body);
+        }
+        return true;
+    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_conversation_display, menu);

@@ -2,6 +2,34 @@
 <items version="2" >
 
     <item
+<<<<<<< HEAD
+        jar="/Users/hoodedraven/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.0/support-annotations-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="990e7f98a7bad86a40b1f0bcfeb039023afd0839">
+        <dex dex="/Users/hoodedraven/AndroidStudioProjects/SMSAppV1-1/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.0-dab9adf9bef86aaaec4c1871f32bd713d0ff26ca.jar" />
+    </item>
+    <item
+        jar="/Users/hoodedraven/AndroidStudioProjects/SMSAppV1-1/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/libs/internal_impl-23.0.0.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8bd336eeae661e8311330284897ee07f8ebaa297">
+        <dex dex="/Users/hoodedraven/AndroidStudioProjects/SMSAppV1-1/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.0-5176e0ebff1078bfbae37a7c17b4b4b417ced126.jar" />
+    </item>
+    <item
+        jar="/Users/hoodedraven/AndroidStudioProjects/SMSAppV1-1/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="8413c27b45b7fe61dca4a98159f65e2cee215f5a">
+        <dex dex="/Users/hoodedraven/AndroidStudioProjects/SMSAppV1-1/app/build/intermediates/pre-dexed/debug/classes-7bae4f305a9a70a33c5458ae61f2df49b804e58e.jar" />
+    </item>
+    <item
+        jar="/Users/hoodedraven/AndroidStudioProjects/SMSAppV1-1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.0"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="/Users/hoodedraven/AndroidStudioProjects/SMSAppV1-1/app/build/intermediates/pre-dexed/debug/classes-413bad09ccf81d5084ff5ceb8430608139a9b8e5.jar" />
+=======
         jar="C:\Users\Joe\Desktop\SMSAppV1\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
         jumboMode="false"
         revision="23.0.0"
@@ -42,6 +70,7 @@
         revision="23.0.0"
         sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
         <dex dex="C:\Users\Joe\Desktop\SMSAppV1\app\build\intermediates\pre-dexed\debug\classes-db7c514154b39a6ae9b577a31e771e5dcf558fba.jar" />
+>>>>>>> joe3haha/master
     </item>
 
 </items>

@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +22,6 @@ public class ContactListActivity extends AppCompatActivity {
     ArrayAdapter<String> arrayAdapterNames, arrayAdapterId, arrayAdapterDrafts;
     ListView contactList;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +29,7 @@ public class ContactListActivity extends AppCompatActivity {
         ContentResolver cr = getContentResolver();
         ArrayList<String> ident = new ArrayList<String>();
         ArrayList<String> names = new ArrayList<String>();
-        arrayAdapterNames = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
+        arrayAdapterNames = new ArrayAdapter<String>(this, 			android.R.layout.simple_list_item_1, names);
         //arrayAdapterId = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, id);
         contactList = (ListView) findViewById(R.id.ContactList);
         contactList.setAdapter(arrayAdapterNames);
@@ -42,7 +42,24 @@ public class ContactListActivity extends AppCompatActivity {
             }
         });
 
-        //refreshDrafts();
+        contactList.setClickable(true);
+        contactList.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+
+
+
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+
+
+                new SMS(ContactsContract.PhoneLookup.NUMBER);//pass phone number to sms activity
+
+                Intent intent = new Intent(getApplicationContext(), SMS.class);
+                startActivity(intent);
+            }
+
+
+        });
+
 
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);
@@ -61,19 +78,6 @@ public class ContactListActivity extends AppCompatActivity {
         }
     }
 
-    public void refreshDrafts() {
-        ContentResolver contentResolver = getContentResolver();
-        Cursor smsInboxCursor = contentResolver.query(Uri.parse("content://sms/inbox"), null, null, null, null);
-        int indexBody = smsInboxCursor.getColumnIndex("body");
-        int indexAddress = smsInboxCursor.getColumnIndex("address");
-        if (indexBody < 0 || !smsInboxCursor.moveToFirst()) return;
-        arrayAdapterDrafts.clear();
-        do {
-            String str = "SMS From: " + smsInboxCursor.getString(indexAddress) +
-                    "\n" + smsInboxCursor.getString(indexBody) + "\n";
-            arrayAdapterDrafts.add(str);
-        } while (smsInboxCursor.moveToNext());
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

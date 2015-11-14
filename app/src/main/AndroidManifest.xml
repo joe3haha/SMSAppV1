@@ -49,8 +49,7 @@
         </activity>
         <activity
             android:name=".DeleteSmsActivity"
-            android:label="@string/title_activity_delete_sms"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:label="@string/title_activity_delete_sms">
         </activity>
     </application>
 

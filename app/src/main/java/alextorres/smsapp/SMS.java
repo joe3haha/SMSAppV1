@@ -16,8 +16,16 @@ import android.widget.Toast;
 public class SMS extends Activity {
 
     private Button btnSendSMS;
-    private EditText txtPhoneNo;
-    private EditText txtMessage;
+    public static EditText txtPhoneNo;
+    public EditText txtMessage;
+
+    public SMS(String number) {
+        if((number.length()==10) || (number.length()==11)) {
+            txtPhoneNo.setText(number);
+        }
+
+        else txtMessage.setText(number);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -132,4 +140,5 @@ public class SMS extends Activity {
         Intent intent = new Intent(this, ContactListActivity.class);
         startActivity(intent);
     }
+
 }

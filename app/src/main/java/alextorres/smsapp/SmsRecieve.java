@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -54,6 +55,8 @@ public class SmsRecieve extends AppCompatActivity implements AdapterView.OnItemC
     ArrayList<String> smsMessagesList = new ArrayList<String>();
     ListView smsListView;
     ArrayAdapter arrayAdapter;
+    SearchView search;
+    static Uri uri ;
 
 
     public static SmsRecieve instance() {
@@ -71,12 +74,57 @@ public class SmsRecieve extends AppCompatActivity implements AdapterView.OnItemC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms_recieve);
         smsListView = (ListView) findViewById(R.id.SMSList);
+        search = (SearchView) findViewById(R.id.searchView);
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, smsMessagesList);
         smsListView.setAdapter(arrayAdapter);
         smsListView.setOnItemClickListener(this);
 
+
+
         refreshSmsInbox();
         refreshDraftsBox();
+
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Cursor c;
+
+                uri = Uri.parse("content://sms/inbox");
+                c = getContentResolver().query(uri, null, null ,null, "date DESC");
+                startManagingCursor(c);
+
+                String[] body = new String[c.getCount()];
+
+                if(c.moveToFirst()){
+                    for(int i=0;i<c.getCount();i++){
+                        body[i]= c.getString(c.getColumnIndexOrThrow("body"));
+
+                        smsMessagesList = check(body[i]);
+
+                        c.moveToNext();
+                    }
+                }
+                c.close();
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+    }
+
+    private ArrayList<String> check(String str) {
+
+        boolean fullContainsSub = str.toUpperCase().indexOf(str.toUpperCase()) != -1;
+
+        if(fullContainsSub)
+        {
+            smsMessagesList.add(str);
+        }
+        return smsMessagesList;
     }
 
     private void refreshDraftsBox() {
