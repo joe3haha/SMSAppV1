@@ -1,6 +1,8 @@
 package alextorres.smsapp;
 
 import android.app.Activity;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
@@ -72,17 +74,19 @@ public class SMS extends Activity {
 
     public void sendSMS()
     {
-        try
-        {
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage(txtPhoneNo.getText().toString(), null, txtMessage.getText().toString(), null, null);
-            Toast.makeText(getApplicationContext(), "message sent", Toast.LENGTH_LONG).show();
-        }
+        String number = txtPhoneNo.getText().toString();
+        String multiNumbers[] = number.split(", *");
 
-        catch (Exception ex)
-        {
-            Toast.makeText(getApplicationContext(), "message failed", Toast.LENGTH_LONG).show();
-            ex.printStackTrace();
+        for(String n : multiNumbers) {
+            try {
+
+                SmsManager smsManager = SmsManager.getDefault();
+                smsManager.sendTextMessage(n, null, txtMessage.getText().toString(), null, null);
+                Toast.makeText(getApplicationContext(), "message sent", Toast.LENGTH_LONG).show();
+            } catch (Exception ex) {
+                Toast.makeText(getApplicationContext(), "message failed", Toast.LENGTH_LONG).show();
+                ex.printStackTrace();
+            }
         }
 
 
@@ -139,6 +143,12 @@ public class SMS extends Activity {
     public void toContacts(View view){
         Intent intent = new Intent(this, ContactListActivity.class);
         startActivity(intent);
+    }
+
+    public void showHelpBox(View view)
+    {
+        DialogFragment help = new HelpBox();
+        help.show(getFragmentManager(), "What are those?");
     }
 
 }
