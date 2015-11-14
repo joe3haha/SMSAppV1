@@ -87,7 +87,6 @@ public class SmsRecieve extends AppCompatActivity implements AdapterView.OnItemC
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
                 Cursor c;
 
                 uri = Uri.parse("content://sms/inbox");
