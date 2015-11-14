@@ -41,17 +41,8 @@ public class SMS extends Activity {
             Bundle extras = getIntent().getExtras();
             if (!(extras.isEmpty())) {
                 try {
-                    if(extras.containsKey("ContactName")){
-                        String number = extras.getString("ContactName");
-                        txtPhoneNo.setText(number);
-                        extras.clear();
-                    }else{
-                        String message = extras.getString("smsMessage");
-                        txtMessage.setText(message);
-                        extras.clear();
-                    }
-
-
+                    String number = extras.getString("ContactName");
+                    txtPhoneNo.setText(number);
                 } catch (Exception E) {
                     System.out.println("Blah");
                 }

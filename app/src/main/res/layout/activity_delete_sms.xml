@@ -29,24 +29,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:id="@+id/replyButton"
-            android:text="Reply"
-            android:onClick="reply"/>
+            android:id="@+id/yesButton"
+            android:text="YES"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:id="@+id/forwardButton"
-            android:text="Forward"
-            android:onClick="forward"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:id="@+id/deleteButton"
-            android:text="Delete"/>
+            android:id="@+id/noButton"
+            android:text="No"/>
 
     </LinearLayout>
 
