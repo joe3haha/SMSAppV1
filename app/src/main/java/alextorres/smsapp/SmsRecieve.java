@@ -21,6 +21,16 @@ import java.util.ArrayList;
 
 public class SmsRecieve extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
+    String[] thread_id, snippet,conversationCount, phoneNumbers;
+    ArrayList<String> name;
+    private static SmsRecieve inst;
+    ArrayList<String> smsMessagesList = new ArrayList<String>();
+    ListView smsListView;
+    ArrayAdapter arrayAdapter;
+    SearchView search;
+    static Uri uri ;
+    public boolean auto_reply_status;
+
     public class SmsBroadcastReceiver extends BroadcastReceiver {
 
         public static final String SMS_BUNDLE = "pdus";
@@ -39,6 +49,11 @@ public class SmsRecieve extends AppCompatActivity implements AdapterView.OnItemC
 
                     smsMessageStr += "SMS From: " + address + "\n";
                     smsMessageStr += smsBody + "\n";
+
+                    if (auto_reply_status==true){
+                        SMS autoreply = new SMS();
+                        autoreply.sendSMS(address);
+                    }
                 }
                 Toast.makeText(context, smsMessageStr, Toast.LENGTH_SHORT).show();
 
@@ -46,18 +61,9 @@ public class SmsRecieve extends AppCompatActivity implements AdapterView.OnItemC
                 SmsRecieve inst = SmsRecieve.instance();
                 inst.updateList(smsMessageStr);
             }
+
         }
     }
-
-    String[] thread_id, snippet,conversationCount, phoneNumbers;
-    ArrayList<String> name;
-    private static SmsRecieve inst;
-    ArrayList<String> smsMessagesList = new ArrayList<String>();
-    ListView smsListView;
-    ArrayAdapter arrayAdapter;
-    SearchView search;
-    static Uri uri ;
-
 
     public static SmsRecieve instance() {
         return inst;

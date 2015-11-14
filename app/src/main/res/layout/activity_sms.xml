@@ -67,11 +67,28 @@
         android:onClick="toDrafts"/>
 
     <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="set auto-reply"
+        android:id="@+id/autoreplyOn"
+        android:layout_gravity="center_horizontal"
+        android:onClick="autoReplyOn" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Unset auto-reply"
+        android:id="@+id/autoreplyOff"
+        android:layout_gravity="center_horizontal"
+        android:onClick="autoReplyOff" />
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Help"
-        android:id="@+id/button2"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/helpButton"
+        android:layout_gravity="center_horizontal"
+        android:onClick="showHelpBox"/>
 
 
 </LinearLayout>
